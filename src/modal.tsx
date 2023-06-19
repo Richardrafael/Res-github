@@ -26,11 +26,12 @@ function Modal( { open   , setSelectedId,  seguidores , loading , } : modazinho)
     && (
      <motion.div 
      initial={{y: "-100vh", opacity: 0,}}
-     animate={{ y: "0", opacity: 1, }}
+     animate={{ y: 0, opacity: 1, }}
      transition={{        duration: 0.1, type: "spring", damping: 25, stiffness: 500,}}
      exit={{  y: "-100vh", opacity: 0,}}
-     className="w-screen  backdrop-filter backdrop-blur-lg fixed flex flex-col">
-        <motion.div  className="flex-col items-center justify-center  gap-y-7  h-screen flex text-5xl ">
+     className="w-screen h-full  backdrop-filter backdrop-blur-lg  fixed justify-center  flex flex-col">
+        <div  
+        className="flex-col items-center justify-center   gap-y-7  h-full flex text-5xl ">
            { loading  ?
            
                 <div className="bg-gradient-to-br  to-cyan-950 shadow-2xl xl:w-5/12 sm:w-6/12 w-7/12 rounded-2xl from-blue-900  flex-col">
@@ -78,7 +79,7 @@ function Modal( { open   , setSelectedId,  seguidores , loading , } : modazinho)
                <>
                <Loader/>
                </> }
-            </motion.div>
+            </div>
         </motion.div>
         )}
 </>
