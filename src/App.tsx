@@ -179,8 +179,8 @@ setSelectedId1(!selectedId1)
          <div className="w-full h-full justify-center  flex items-center flex-col ">
          
         <motion.div 
-      // initial={{x :"-100vh" , opacity: 0}}
-      // animate={{ x :0 ,  opacity:1}}
+      initial={{x :"-100vh" }}
+      animate={{ x :0 }}
       // transition={{duration: 0.1}}
         className="flex flex-col h-4/6 bg-gradient-to-br  to-cyan-950 shadow-2xl  from-blue-900 gap-2 justify-between rounded-xl p-2 w-80 xl:w-96   items-center ">
        
