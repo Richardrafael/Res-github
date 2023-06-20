@@ -218,7 +218,7 @@ setSelectedId1(!selectedId1)
         {
         usuario?.name === null ? 
         <>
-        <div>
+        <div >
         <span className="font-black text-base text-cyan-50 ">
           {usuario.login}
         </span>
@@ -226,8 +226,8 @@ setSelectedId1(!selectedId1)
           
          </>
           : 
-          <div>  
-        <span className="font-black text-base text-cyan-50 ">
+          <div className="">  
+        <span className="font-black text-base rounded-full bg-opacity-30 bg-black  shadow-2xl p-2 text-cyan-50 ">
           {usuario?.name}
         </span>
         </div>
@@ -275,7 +275,7 @@ setSelectedId1(!selectedId1)
             <span  className=" bg-blue-200 cursor-pointer h-8 text font-bold justify-center items-center flex w-8 p-1 rounded-full">
             {usuario.following}
             </span>
-            <span className="text-base text-cyan-50 font-bold">
+            <span className="text-base  text-cyan-50 font-bold">
             Seguindo 
             </span>
           
@@ -284,8 +284,8 @@ setSelectedId1(!selectedId1)
           
          
             <div className="flex flex-col rounded-xl  gap-3 text-cyan-50  w-11/12  pl-1 pt-1 justify-center">
-            <div>
-        <span className="font-black  text-base">
+            <div className="rounded-full bg-opacity-30 flex flex-row justify-center bg-black">
+        <span className="font-black   text-base">
           Criado em : 
           </span>
           <span className="pl-2">
@@ -294,7 +294,7 @@ setSelectedId1(!selectedId1)
         </div>
           { 
          !(usuario?.location ===  null) &&
-            <div >
+            <div  className="rounded-full bg-opacity-30 flex flex-row justify-center bg-black" >
              <span className="font-black text-base">
               Localização :
               </span>
@@ -306,9 +306,9 @@ setSelectedId1(!selectedId1)
          
           { 
           !(usuario?.bio === null) &&
-            <div>
-            <span className="text-center ">
-              {usuario?.bio}
+            <div >
+            <span className="rounded-full bg-opacity-30 flex flex-row justify-center items-center text-center bg-black">
+              {usuario?.bio} 
               </span>
             </div>}
           </div>

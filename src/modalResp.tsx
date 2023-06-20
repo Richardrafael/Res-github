@@ -84,7 +84,7 @@ function ModalResp( { open   , setSelectedId,  seguidores , loading  } : modazin
                             className=" p-2 xl:p-1 pl-2 text-xs sm:text-sm xl:text-base   gap-3 bg-gradient-to-br to-cyan-700 shadow-2xl  from-blue-700 rounded-full   my-1 w-5/6">
                             <div className="w-full grid-cols-1 xl:grid-cols-2 gap-2 grid justify-items-center">
                                 <div>
-                                <span className="break-all shadow-2xl font-semibold bg-gradient-to-r from-blue-500 to-sky-500 p-1 px-3 rounded-full" >
+                                <span className=" shadow-2xl break-all text-slate-100 font-black bg-gradient-to-r from-blue-500 to-sky-500 p-1 px-3 rounded-full" >
                                         {i.name}
                                         
                                     </span>
@@ -93,8 +93,8 @@ function ModalResp( { open   , setSelectedId,  seguidores , loading  } : modazin
                                     <motion.span className="text-xs sm:text-sm xl:text-base shadow-2xl  bg-gradient-to-r from-blue-100 to-sky-300 p-1 rounded-full font-semibold" >{formatadata(i.created_at)}</motion.span>
                                     
                                         <div>
-                                        <span className={ !(i.language === null ) ? " shadow-2xl bg-gradient-to-r from-orange-600 to-amber-500 rounded-full p-1 font-semibold" : 
-                                    "bg-gradient-to-r from-red-600 to-red-900 rounded-full p-1 shadow-2xl font-semibold" }>
+                                        <span className={ !(i.language === null ) ? " text-slate-100  shadow-2xl bg-gradient-to-r from-orange-600 to-amber-500 rounded-full p-1 font-semibold" : 
+                                    "bg-gradient-to-r text-slate-100 from-red-600 to-red-900 rounded-full break-all p-1 shadow-2xl font-semibold" }>
                                                 {
                                                 !(i.language === null )  ? <>
                                                 {i.language}</>:<>Linguagem não reconhecida</> 

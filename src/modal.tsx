@@ -64,7 +64,7 @@ function Modal( { open   , setSelectedId,  seguidores , loading  , functiona} : 
                         >
                             <button 
                             onClick={() => (functiona(i.login))}
-                            className=" p-1 pl-2 gap-3 bg-gradient-to-br to-cyan-700 shadow-2xl  from-blue-700 rounded-full flex items-center flex-row my-1 w-5/6">
+                            className=" p-1 pl-1 sm:pl-2 xl:pl-3 gap-3 bg-gradient-to-br to-cyan-700 shadow-2xl  from-blue-700 rounded-full flex items-center flex-row my-1 w-5/6">
                                 <img className="h-10 w-10  rounded-full" src={i.avatar_url}/>
                                 <motion.span className="text-base" >{i.login}</motion.span>
                             </button>
