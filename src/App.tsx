@@ -6,6 +6,7 @@ import { SlClose } from "react-icons/sl";
 import Loader from "./loader";
 import {  motion } from "framer-motion";
 import Modal from "./modal";
+import ModalResp from "./modalResp";
 
 interface UserType {
   name: string;
@@ -28,14 +29,15 @@ function App() {
   const [error, setError] = useState(null);
   const [seguidores , setSeguidores] = useState([])
   const [seguindo , setSeguindo ] = useState([])
+  const [repositorios , setRepositorios ] = useState([])
   const [selectedId, setSelectedId] = useState(false)
   const [selectedId1, setSelectedId1] = useState(false)
-  // const [selectedId2, setSelectedId2] = useState(false)
+  const [selectedId2, setSelectedId2] = useState(false)
   const[loading, setLoading] = useState (true)
   const[loading1, setLoading1] = useState (true)
   const[loading2, setLoading2] = useState (true)
-  // const[loading3, setLoading3] = useState (true)
-
+  const[loading3, setLoading3] = useState (true)
+// const [newUser , setNewUser] =useState("")
   const [user , setUser] = useState("");
 
 
@@ -58,6 +60,25 @@ setIsOPen(!isOpen)
 
   }
 
+
+ const  procurareposi = () => {
+  setLoading3(false)
+  async function mandara() {
+  await api
+   .get(`${user}/repos`)
+   .then((res) => {
+     console.log(res.data)
+     setRepositorios(res.data);
+   })
+   .catch((error) => setError(error.message))
+   console.log("passei")
+   setLoading3(true)
+  } 
+
+mandara()
+setSelectedId2(!selectedId)
+ }
+
   const  procuraseguidores = () => {
     setLoading1(false)
    async function mandara() {
@@ -75,32 +96,41 @@ setIsOPen(!isOpen)
 mandara()
 setSelectedId(!selectedId)
 
+
   }
-//   const  forgetfollow = (user1 : any) => {
-//     setLoading1(false)
-//    async function mandara() {
-//    await api
-//     .get(`${user1}`)
-//     .then((res) => {
-//       console.log(res.data)
-//       setSeguidores(res.data);
-//     })
-//     .catch((error) => setError(error.message))
-//     console.log("passei")
-//     setLoading1(true)
-//    } 
 
-// mandara()
-// setSelectedId(!selectedId)
 
-//   }
+const getfollowers = (newUser : string) => {
+  console.log(newUser)
+  setUser(newUser)
+  setLoading(false)
+  // setUser("")
+   async function mandar() {
+   await api
+    .get(newUser)
+    .then((res) => {
+      console.log(res.data)
+      setUsuario(res.data);
+    })
+    .catch((error) => setError(error.message))
+    // console.log("passei")
+    setLoading(true)
+   } 
+   setSelectedId(false)
+   setSelectedId1(false)
+    mandar()  
+}
+
+// getfollowers()
+
+
   const  procuraseguindo = () => {
     setLoading2(false)
    async function mandar() {
    await api
     .get(`${user}/following`)
     .then((res) => {
-      console.log(res.data)
+      // console.log(res.data)
       setSeguindo(res.data);
     })
     .catch((error) => setError(error.message))
@@ -170,8 +200,9 @@ setSelectedId1(!selectedId1)
     {  
         usuario && 
         <>
-            <Modal  loading={loading1} open={selectedId} setSelectedId={setSelectedId} seguidores={seguidores} />
-            <Modal  loading={loading2}  open={selectedId1} setSelectedId={setSelectedId1} seguidores={seguindo} />
+            <Modal functiona={getfollowers}  loading={loading1} open={selectedId} setSelectedId={setSelectedId} seguidores={seguidores} />
+            <Modal functiona={getfollowers}  loading={loading2}  open={selectedId1} setSelectedId={setSelectedId1} seguidores={seguindo} />
+            <ModalResp   loading={loading3}  open={selectedId2} setSelectedId={setSelectedId2} seguidores={repositorios} />
         <button className="m-8 fixed p-2" onClick={fechar}>
         <SlClose size={30} color="white" />
         </button>
@@ -226,7 +257,10 @@ setSelectedId1(!selectedId1)
             Seguidores
             </span>
             </motion.div>
-            <div className="flex  shadow-2xl flex-col items-center">
+            <motion.div 
+            whileHover={{scale:1.2}}
+            onClick={procurareposi}
+            className="flex flex-col cursor-pointer shadow-2xl items-center">
             <span className=" bg-blue-200 h-8 justify-center items-center font-bold flex w-8 p-1 rounded-full">
             {usuario.public_repos}
             </span>
@@ -234,7 +268,7 @@ setSelectedId1(!selectedId1)
             Repositórios
             </span>
           
-            </div>
+            </motion.div>
           <motion.div 
           whileHover={{scale:1.2}}
           onClick={procuraseguindo} className="flex flex-col cursor-pointer shadow-2xl items-center">
