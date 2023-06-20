@@ -52,7 +52,7 @@ function ModalResp( { open   , setSelectedId,  seguidores , loading  } : modazin
         className="flex-col items-center justify-center   gap-y-7  h-full flex text-5xl ">
            { loading  ?
            
-                <div className="bg-gradient-to-br  to-cyan-950 shadow-2xl xl:w-5/12 sm:w-6/12 w-7/12 rounded-2xl from-blue-900  flex-col">
+                <div className="bg-gradient-to-br  to-cyan-950 shadow-2xl xl:w-7/12 sm:w-9/12 w-7/12 rounded-2xl from-blue-900  flex-col">
                     <div>
                         <motion.button className=" fixed p-3 " onClick={() => (setSelectedId (!open))} >
                                 <SlClose size={30} color="white" /> 
@@ -82,27 +82,27 @@ function ModalResp( { open   , setSelectedId,  seguidores , loading  } : modazin
                             <a href={`${i.html_url}`} target="_blank"
                             // onClick={() => (functiona(i.login))}
                             className=" p-2 xl:p-1 pl-2 text-xs sm:text-sm xl:text-base   gap-3 bg-gradient-to-br to-cyan-700 shadow-2xl  from-blue-700 rounded-full   my-1 w-5/6">
-                            <div className="w-full grid-cols-1 xl:grid-cols-2 gap-2 grid justify-items-center">
+                            <div className="w-full grid-cols-1 xl:grid-cols-1 gap-2 grid items-center justify-items-center">
                                 <div>
                                 <span className=" shadow-2xl break-all text-slate-100 font-black bg-gradient-to-r from-blue-500 to-sky-500 p-1 px-3 rounded-full" >
                                         {i.name}
-                                        
                                     </span>
                                 </div>
                                    
-                                    <motion.span className="text-xs sm:text-sm xl:text-base shadow-2xl  bg-gradient-to-r from-blue-100 to-sky-300 p-1 rounded-full font-semibold" >{formatadata(i.created_at)}</motion.span>
+                                   
                                     
-                                        <div>
+                                        <div className=" flex justify-center gap-4 w-full items-center flex-row">
                                         <span className={ !(i.language === null ) ? " text-slate-100  shadow-2xl bg-gradient-to-r from-orange-600 to-amber-500 rounded-full p-1 font-semibold" : 
-                                    "bg-gradient-to-r text-slate-100 from-red-600 to-red-900 rounded-full break-all p-1 shadow-2xl font-semibold" }>
+                                    "bg-gradient-to-r text-slate-100 from-red-600 to-red-900 rounded-full text-center p-1 shadow-2xl font-semibold" }>
                                                 {
                                                 !(i.language === null )  ? <>
-                                                {i.language}</>:<>Linguagem não reconhecida</> 
+                                                {i.language}</>:<>Não reconhecida</> 
                                                 }
                                             </span>
+                                            <motion.span className="text-xs  items-center sm:text-sm xl:text-base shadow-2xl  bg-gradient-to-r from-blue-100 to-sky-300 p-1 rounded-full font-semibold" >{formatadata(i.created_at)}</motion.span>
                                         </div>
                                            
-                                       
+                                      
                                     </div>
                                
                             </a>

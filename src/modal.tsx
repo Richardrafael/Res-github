@@ -35,7 +35,7 @@ function Modal( { open   , setSelectedId,  seguidores , loading  , functiona} : 
         className="flex-col items-center justify-center   gap-y-7  h-full flex text-5xl ">
            { loading  ?
            
-                <div className="bg-gradient-to-br  to-cyan-950 shadow-2xl xl:w-5/12 sm:w-6/12 w-7/12 rounded-2xl from-blue-900  flex-col">
+                <div className="bg-gradient-to-br  to-cyan-950 shadow-2xl xl:w-5/12 sm:w-9/12 w-7/12 rounded-2xl from-blue-900  flex-col">
                     <div>
                         <motion.button className=" fixed p-3 " onClick={() => (setSelectedId (!open))} >
                                 <SlClose size={30} color="white" /> 
@@ -66,7 +66,7 @@ function Modal( { open   , setSelectedId,  seguidores , loading  , functiona} : 
                             onClick={() => (functiona(i.login))}
                             className=" p-1 pl-1 sm:pl-2 xl:pl-3 gap-3 bg-gradient-to-br to-cyan-700 shadow-2xl  from-blue-700 rounded-full flex items-center flex-row my-1 w-5/6">
                                 <img className="h-10 w-10  rounded-full" src={i.avatar_url}/>
-                                <motion.span className="text-base" >{i.login}</motion.span>
+                                <motion.span className="text-base text-slate-200  font-black" >{i.login.charAt(0).toUpperCase() + i.login.slice(1) }</motion.span>
                             </button>
                         </motion.div>
                     </>

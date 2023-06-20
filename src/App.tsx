@@ -1,5 +1,6 @@
 import {  useState } from "react";
 import "./global.css"
+import "./style.css"
 import api from "./AxiosInstace";
 import { FaSearch } from "react-icons/fa";
 import { SlClose } from "react-icons/sl";
@@ -76,7 +77,7 @@ setIsOPen(!isOpen)
   } 
 
 mandara()
-setSelectedId2(!selectedId)
+setSelectedId2(!selectedId2)
  }
 
   const  procuraseguidores = () => {
@@ -174,11 +175,13 @@ setSelectedId1(!selectedId1)
         <div className="w-full h-full  flex items-center flex-col ">
         <div className="w-3/4  gap-6 flex flex-col items-center h-auto ">
         <h1 className="sm:text-4xl xl:text-6xl text-3xl mt-40 text-slate-50 font-bold ">
-            Procurar Usuario
+            Procurar Usuário
           </h1>
         <div className="flex flex-row sm:w-96 xl:w-2/4 justify-around items-center">
-          <input type="text" placeholder="Digite um usuario" className="rounded-full w-5/6 outline-none pl-2 p-1" onChange={(event) => setUser(event.target.value)}/>
-          <button className="p-1 outline-none"  onClick={procurause}><FaSearch color="white" size={24}/></button>
+          <input type="text" placeholder="Digite um usuario" className="rounded-full placeholder:font-black placeholder:text-slate-700 w-5/6 outline-none pl-2 p-1" onChange={(event) => setUser(event.target.value)}/>
+          <motion.button 
+          whileHover={{scale:1.2}}
+          className="p-1 outline-none"  onClick={procurause}><FaSearch color="white" size={24}/></motion.button>
           </div>  
         </div>
         </div>
@@ -210,16 +213,13 @@ setSelectedId1(!selectedId1)
          <div className="w-full h-full justify-center  flex items-center flex-col ">
          
         <motion.div 
-      // initial={{y :"-100vh" }}
-      // animate={{ y :0 }}
-      // transition={{duration: 0.1}}
-        className="flex flex-col h-4/6 bg-gradient-to-br  to-cyan-950 shadow-2xl  from-blue-900 gap-2 justify-between rounded-xl p-2 w-80 xl:w-96   items-center ">
+        className="flex flex-col min-h-4/6 bg-gradient-to-br  to-cyan-950 shadow-2xl  from-blue-900 gap-2 justify-between rounded-xl p-2 w-80 xl:w-96   items-center ">
        
         {
         usuario?.name === null ? 
         <>
         <div >
-        <span className="font-black text-base text-cyan-50 ">
+        <span className="font-black text-base rounded-full bg-opacity-30 bg-black  shadow-2xl p-2 text-cyan-50">
           {usuario.login}
         </span>
         </div>
@@ -244,12 +244,16 @@ setSelectedId1(!selectedId1)
           <div className="flex flex-row rounded-xl   w-11/12 h-auto   pl-1  justify-between">
           <motion.div 
            whileHover={{scale:1.2}}
+           
            onClick={procuraseguidores}
           className="flex flex-col cursor-pointer  items-center">
             <motion.div 
-           
-            className=" bg-blue-200 shadow-2xl h-8 justify-center items-center flex w-8 p-1 rounded-full">
-            <span className="p-1  font-bold ">
+            //  initial={{ x: "-1rem"}}
+            // initial={{ x: -10 }}
+        animate={{ x: [0 , 5 , -1] ,}}
+        transition={{ duration: 0.2, repeat: 3 , repeatType: 'reverse' }}
+            className=" bg-blue-200 shadow-2xl min-w-[2rem]  h-8 justify-center items-center flex  p-1 rounded-full">
+            <span className="p-1  font-bold   ">
             {usuario.followers}
               </span>
             </motion.div>
@@ -261,9 +265,12 @@ setSelectedId1(!selectedId1)
             whileHover={{scale:1.2}}
             onClick={procurareposi}
             className="flex flex-col cursor-pointer shadow-2xl items-center">
-            <span className=" bg-blue-200 h-8 justify-center items-center font-bold flex w-8 p-1 rounded-full">
+            <motion.span
+             animate={{ x: [0 , 5 , -1] ,}}
+             transition={{ duration: 0.2, repeat: 3 , repeatType: 'reverse' }}
+            className=" bg-blue-200 h-8 justify-center items-center font-bold flex min-w-[2rem] p-1 rounded-full">
             {usuario.public_repos}
-            </span>
+            </motion.span>
             <span className="text-base text-cyan-50 font-bold">
             Repositórios
             </span>
@@ -272,9 +279,12 @@ setSelectedId1(!selectedId1)
           <motion.div 
           whileHover={{scale:1.2}}
           onClick={procuraseguindo} className="flex flex-col cursor-pointer shadow-2xl items-center">
-            <span  className=" bg-blue-200 cursor-pointer h-8 text font-bold justify-center items-center flex w-8 p-1 rounded-full">
+            <motion.span
+             animate={{ x: [0 , 5 , -1] ,}}
+             transition={{ duration: 0.2, repeat: 3 , repeatType: 'reverse' }}
+            className=" bg-blue-200 cursor-pointer min-w-[2rem]  h-8 text font-bold justify-center items-center flex  p-1 rounded-full">
             {usuario.following}
-            </span>
+            </motion.span>
             <span className="text-base  text-cyan-50 font-bold">
             Seguindo 
             </span>
@@ -294,11 +304,11 @@ setSelectedId1(!selectedId1)
         </div>
           { 
          !(usuario?.location ===  null) &&
-            <div  className="rounded-full bg-opacity-30 flex flex-row justify-center bg-black" >
+            <div  className="rounded-full bg-opacity-30   flex flex-row justify-center bg-black" >
              <span className="font-black text-base">
               Localização :
               </span>
-             <span className=" pl-2">
+             <span className=" pl-2 ">
               {usuario.location}
               </span>
             </div>
@@ -307,7 +317,7 @@ setSelectedId1(!selectedId1)
           { 
           !(usuario?.bio === null) &&
             <div >
-            <span className="rounded-full bg-opacity-30 flex flex-row justify-center items-center text-center bg-black">
+            <span className="rounded-full bg-opacity-30 flex flex-row  justify-center items-center text-center bg-black">
               {usuario?.bio} 
               </span>
             </div>}
