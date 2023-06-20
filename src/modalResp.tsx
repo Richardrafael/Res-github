@@ -8,6 +8,7 @@ interface UserType {
     url: string
     created_at : string
     language : string
+    html_url : string
 } 
 
 interface modazinho {
@@ -78,32 +79,33 @@ function ModalResp( { open   , setSelectedId,  seguidores , loading  } : modazin
                         key={a} className="flex flex-row p-1 cursor-pointer items-center  justify-center w-full  "
                         // href=""
                         >
-                            <button 
+                            <a href={`${i.html_url}`} target="_blank"
                             // onClick={() => (functiona(i.login))}
-                            className=" p-1 pl-2 text-xs sm:text-sm xl:text-base   gap-3 bg-gradient-to-br to-cyan-700 shadow-2xl  from-blue-700 rounded-full   my-1 w-5/6">
-                            <div className="w-full grid-cols-1 grid ">
-
-                            
-                                    {/* <div className=" flex flex-nowrap flex-col items-start "> */}
-                                    <span className="break-all" >
+                            className=" p-2 xl:p-1 pl-2 text-xs sm:text-sm xl:text-base   gap-3 bg-gradient-to-br to-cyan-700 shadow-2xl  from-blue-700 rounded-full   my-1 w-5/6">
+                            <div className="w-full grid-cols-1 xl:grid-cols-2 gap-2 grid justify-items-center">
+                                <div>
+                                <span className="break-all shadow-2xl font-semibold bg-gradient-to-r from-blue-500 to-sky-500 p-1 px-3 rounded-full" >
                                         {i.name}
                                         
                                     </span>
-                                    <motion.span className="text-xs" >{formatadata(i.created_at)}</motion.span>
+                                </div>
+                                   
+                                    <motion.span className="text-xs sm:text-sm xl:text-base shadow-2xl  bg-gradient-to-r from-blue-100 to-sky-300 p-1 rounded-full font-semibold" >{formatadata(i.created_at)}</motion.span>
                                     
-                                        {/* </div> */}
-                                        {/* <div className="w-1/2"> */}
-                                            <span>
+                                        <div>
+                                        <span className={ !(i.language === null ) ? " shadow-2xl bg-gradient-to-r from-orange-600 to-amber-500 rounded-full p-1 font-semibold" : 
+                                    "bg-gradient-to-r from-red-600 to-red-900 rounded-full p-1 shadow-2xl font-semibold" }>
                                                 {
                                                 !(i.language === null )  ? <>
-                                                {i.language}</>:<>linguagem não reconhecida</> 
+                                                {i.language}</>:<>Linguagem não reconhecida</> 
                                                 }
                                             </span>
-                                        {/* </div> */}
+                                        </div>
+                                           
                                        
                                     </div>
                                
-                            </button>
+                            </a>
                         </motion.div>
                     </>
                     
